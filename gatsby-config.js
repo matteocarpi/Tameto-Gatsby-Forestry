@@ -1,7 +1,7 @@
 // eslint-disable-next-line no-undef
 module.exports = {
   siteMetadata: {
-    title: 'Tameto Gatsby',
+    title: 'Tameto Gatsby Forestry',
     description: 'A more than minimal Gatsby starter',
     author: '@matteocarpi',
   },
