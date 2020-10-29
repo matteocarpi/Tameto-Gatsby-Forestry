@@ -8,23 +8,30 @@ module.exports = {
   plugins: [
     'gatsby-plugin-sharp',
     'gatsby-transformer-sharp',
-    'gatsby-transformer-remark',
+    'gatsby-plugin-sass',
     {
       resolve: 'gatsby-transformer-remark',
       options: {
-        // CommonMark mode (default: true)
-        commonmark: true,
-        // Footnotes mode (default: true)
-        footnotes: true,
-        // Pedantic mode (default: true)
-        pedantic: true,
-        // GitHub Flavored Markdown mode (default: true)
-        gfm: true,
-        // Plugins configs
-        plugins: [],
+        plugins: [
+          'gatsby-remark-relative-images',
+          'gatsby-remark-normalize-paths',
+          {
+            resolve: 'gatsby-remark-images',
+            options: {
+              // It's important to specify the maxWidth (in pixels) of
+              // the content container as this plugin uses this as the
+              // base for generating different widths of each image.
+              maxWidth: 1024,
+              linkImagesToOriginal: false,
+              backgroundColor: 'transparent',
+              plugins: ['gatsby-remark-images-anywhere'],
+            },
+          },
+          '@forestryio/gatsby-remark-normalize-paths',
+          'gatsby-remark-copy-linked-files',
+        ],
       },
     },
-    'gatsby-plugin-sass',
     {
       resolve: 'gatsby-plugin-google-fonts',
       options: {
